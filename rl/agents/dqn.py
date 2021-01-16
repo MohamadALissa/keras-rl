@@ -137,9 +137,9 @@ class DQNAgent(AbstractDQNAgent):
                 outputlayer = Lambda(lambda a: K.expand_dims(a[:, 0], -1) + a[:, 1:], output_shape=(nb_action,))(y)
             else:
                 assert False, "dueling_type must be one of {'avg','max','naive'}"
-
+            print('eeeeeeeeeee')
             model = Model(inputs=model.input, outputs=outputlayer)
-
+            print('ddddddddddddddd')
         # Related objects.
         self.model = model
         if policy is None:
