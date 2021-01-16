@@ -103,7 +103,7 @@ class DQNAgent(AbstractDQNAgent):
     def __init__(self, model, policy=None, test_policy=None, enable_double_dqn=False, enable_dueling_network=False,
                  dueling_type='avg', *args, **kwargs):
         super(DQNAgent, self).__init__(*args, **kwargs)
-
+        print('11111111111111111111')
         # Validate (important) input.
 #         if hasattr(model.output, '__len__') and len(model.output) > 1:
 #             raise ValueError('Model "{}" has more than one output. DQN expects a model that has a single output.'.format(model))
@@ -114,6 +114,7 @@ class DQNAgent(AbstractDQNAgent):
         self.enable_double_dqn = enable_double_dqn
         self.enable_dueling_network = enable_dueling_network
         self.dueling_type = dueling_type
+        print('22222222222222222222')
         if self.enable_dueling_network:
             # get the second last layer of the model, abandon the last layer
             layer = model.layers[-2]
@@ -122,6 +123,7 @@ class DQNAgent(AbstractDQNAgent):
             # y[:,0] represents V(s;theta)
             # y[:,1:] represents A(s,a;theta)
             y = Dense(nb_action + 1, activation='linear')(layer.output)
+            print('3333333333333333333')
             # caculate the Q(s,a;theta)
             # dueling_type == 'avg'
             # Q(s,a;theta) = V(s;theta) + (A(s,a;theta)-Avg_a(A(s,a;theta)))
